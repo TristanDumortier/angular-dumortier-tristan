@@ -1,0 +1,45 @@
+<!-- Si l'on a une arme selectionnée -->
+<script src="../../../../Desktop/weapon-detail.component.ts"></script>
+<div *ngIf="weapon">
+  <!-- Alors on affiche le détail de cette arme -->
+  <fieldset>
+    <legend><h2>Détails de l'arme <b>{{weapon.name | uppercase}}</b> </h2></legend>
+    <div><span>Id: </span>{{weapon.id}}</div>
+    <div>
+      <label>Nom:
+        <input [(ngModel)]="weapon.name" placeholder="Nom de l'arme"/>
+      </label>
+    </div>
+
+    <section id="stats_hero">
+      <!-- Stats des héros -->
+      <h2><b>Statistiques de l'arme :</b></h2>
+      <h3><b>Point à distribuer: {{getNbPointsWeapons()}}</b></h3>
+      <!-- Liste de tous les stats de l'arme -->
+      <ul>
+        <li>
+          <label>Attaque :
+            <input type="number" min="-5" max="5" [(ngModel)]="weapon.attaque" placeholder="1"/>
+          </label>
+        </li>
+        <li>
+          <label>Esquive :
+            <input type="number" min="-5" max="5" [(ngModel)]="weapon.esquive" placeholder="-1"/>
+          </label>
+        </li>
+        <li>
+          <label>Dégâts :
+            <input type="number" min="-5" max="5" [(ngModel)]="weapon.degats" placeholder="1"/>
+          </label>
+        </li>
+        <li>
+          <label>Points de vie :
+            <input type="number" min="-5" max="5" [(ngModel)]="weapon.pv" placeholder="2"/>
+          </label>
+        </li>
+      </ul>
+      <h4>Information : La somme de l’attaque, esquive, dégât et pv doit être égale à 0.</h4>
+    </section>
+  </fieldset>
+  <button (click)="goBack()">Go back</button>
+</div>
